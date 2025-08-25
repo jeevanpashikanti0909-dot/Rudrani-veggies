@@ -1,0 +1,9 @@
+{
+  "name": "Rudrani Veggies",
+  "short_name": "Veggies",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "green",
+  "icons": []
+}
