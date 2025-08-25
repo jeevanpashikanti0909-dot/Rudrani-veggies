@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FreshVeggie Subscription</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>🥕 FreshVeggie Subscription</h1>
+    <p>Fresh, local vegetables delivered to your door.</p>
+  </header>
+
+  <section class="plans">
+    <h2>Our Plans</h2>
+    <div class="plan-card">
+      <h3>Weekly Box</h3>
+      <p>Fresh vegetables delivered every week.</p>
+      <p><strong>$20/week</strong></p>
+      <button onclick="subscribe('Weekly Box')">Subscribe</button>
+    </div>
+    <div class="plan-card">
+      <h3>Monthly Box</h3>
+      <p>A big box of seasonal veggies once a month.</p>
+      <p><strong>$70/month</strong></p>
+      <button onclick="subscribe('Monthly Box')">Subscribe</button>
+    </div>
+  </section>
+
+  <section class="signup" id="signup">
+    <h2>Sign Up</h2>
+    <form id="subscriptionForm">
+      <input type="text" id="name" placeholder="Your Name" required>
+      <input type="email" id="email" placeholder="Your Email" required>
+      <input type="text" id="address" placeholder="Delivery Address" required>
+      <button type="submit">Submit</button>
+    </form>
+    <p id="confirmation"></p>
+  </section>
+
+  <footer>
+    <p>Contact us at: support@freshveggie.com</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
