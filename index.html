@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rudrani Veggies — Farm-fresh subscriptions</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <img src="assets/favicon.svg" alt="Rudrani Veggies logo" />
+      <span>Rudrani Veggies</span>
+    </div>
+    <nav class="nav">
+      <a href="#home">Home</a>
+      <a href="#plans">Plans</a>
+      <a href="#basket">Basket</a>
+      <a href="#schedule">Schedule</a>
+      <a href="#farmers">Farmers</a>
+      <a href="#account">Account</a>
+      <a href="#admin" id="adminLink" class="hide">Admin</a>
+    </nav>
+  </header>
+
+  <main id="app">
+    <!-- HOME -->
+    <section id="home" class="route visible">
+      <div class="hero">
+        <h1>Farm-fresh veggies, every 3 days 🥕</h1>
+        <p>Fixed-price subscriptions, rotating baskets, and doorstep delivery.</p>
+        <div class="cta-row">
+          <a class="btn primary" href="#plans">Choose a plan</a>
+          <a class="btn ghost" href="#basket">See baskets</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PLANS -->
+    <section id="plans" class="route">
+      <h2>Subscription Plans</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>Starter Basket</h3>
+          <p class="price">₹1500 / month</p>
+          <ul>
+            <li>For 2–3 people</li>
+            <li>10 rotations (3-day cycle)</li>
+            <li>4–5 kg per rotation</li>
+            <li>Delivery included</li>
+          </ul>
+          <button onclick="RV.selectPlan('starter')" class="btn primary">Choose Starter</button>
+        </div>
+        <div class="card">
+          <h3>Family Basket</h3>
+          <p class="price">₹2000 / month</p>
+          <ul>
+            <li>For 3–5 people</li>
+            <li>10 rotations (3-day cycle)</li>
+            <li>6–7 kg per rotation</li>
+            <li>Delivery included</li>
+          </ul>
+          <button onclick="RV.selectPlan('family')" class="btn primary">Choose Family</button>
+        </div>
+      </div>
+      <div id="planConfirm" class="note hide"></div>
+    </section>
+
+    <!-- BASKET -->
+    <section id="basket" class="route">
+      <h2>Sample rotating baskets</h2>
+      <div id="basketGrid" class="grid"></div>
+    </section>
+
+    <!-- SCHEDULE -->
+    <section id="schedule" class="route">
+      <h2>Delivery schedule</h2>
+      <form id="scheduleForm" onsubmit="RV.saveSchedule(event)">
+        <label>
+          Start date
+          <input type="date" id="startDate" required>
+        </label>
+        <label>
+          Delivery time
+          <select id="timeWindow" required>
+            <option>7–9 AM</option>
+            <option>9–11 AM</option>
+            <option>5–7 PM</option>
+          </select>
+        </label>
+        <button class="btn primary">Generate Schedule</button>
+      </form>
+      <div id="scheduleOut" class="list"></div>
+    </section>
+
+    <!-- FARMERS -->
+    <section id="farmers" class="route">
+      <h2>Our Partner Farmers</h2>
+      <div id="farmerList" class="list"></div>
+    </section>
+
+    <!-- ACCOUNT -->
+    <section id="account" class="route">
+      <h2>Your Account</h2>
+      <div id="authWrap">
+        <div id="loggedOut">
+          <form onsubmit="RV.auth(event)">
+            <label>
+              Phone number
+              <input type="tel" id="phone" required>
+            </label>
+            <label>
+              Name
+              <input type="text" id="name" required>
+            </label>
+            <button class="btn primary">Continue</button>
+          </form>
+        </div>
+        <div id="loggedIn" class="hide">
+          <p>Welcome <strong id="uName"></strong> (<span id="uPhone"></span>)</p>
+          <button class="btn ghost" onclick="RV.logout()">Logout</button>
+          <div class="orders">
+            <h3>Your Subscription</h3>
+            <div id="subSummary"></div>
+            <button class="btn primary" onclick="RV.placeOrder()">Place / Renew</button>
+            <div id="orderStatus" class="note"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ADMIN -->
+    <section id="admin" class="route">
+      <h2>Admin</h2>
+      <div id="adminStats"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div>© <span id="year"></span> Rudrani Veggies</div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
